@@ -26,7 +26,7 @@ const Project = ({ title, subtitle }) => {
                 <img
                     src={`../assets/${projectTitle}.png`}
                     alt={projectTitle}
-                    className="  object-cover max-h-[400px] "
+                    className="object-scale-down max-h-[400px] "
                 ></img>
             </div>
         </motion.div>
@@ -78,19 +78,19 @@ const Projects = () => {
                         }
                     />
                     <Project
-                        title="Project1"
+                        title="PokemonSimulator"
                         subtitle={
                             'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis consequatur maxime esse doloribu'
                         }
                     />
                     <Project
-                        title="Project1"
+                        title="ObiteljskeKonstelacije"
                         subtitle={
                             'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis consequatur maxime esse doloribu'
                         }
                     />
                     <Project
-                        title="Project1"
+                        title="ChatApp"
                         subtitle={
                             'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis consequatur maxime esse doloribu'
                         }
