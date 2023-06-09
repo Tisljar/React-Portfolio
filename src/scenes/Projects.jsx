@@ -72,7 +72,7 @@ const Projects = () => {
                         VISUALLY APPEALING USER INTERFACES
                     </div>
                     <Project
-                        title="Project1"
+                        title="CryptoPrices"
                         subtitle={
                             'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis consequatur maxime esse doloribu'
                         }
