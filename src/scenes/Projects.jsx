@@ -13,12 +13,15 @@ const projectAnimationVariant = {
     visible: { opacity: 1, scale: 1 },
 };
 
-const Project = ({ title, subtitle }) => {
-    const overlayStyles = `absolute h-full w-full opacity-0 hover:opacity-90 transition duration-500 bg-grey z-30 flex flex-col justify-center items-center text-center p-16 text-deep-blue`;
+const Project = ({ title, subtitle, refrence }) => {
+    const handleOpenProject = () => {
+        window.open(refrence);
+    };
+    const overlayStyles = `absolute h-full w-full opacity-0 hover:opacity-95 transition duration-500 bg-grey z-30 flex flex-col justify-center items-center text-center p-16 text-dark-grey cursor-pointer`;
     const projectTitle = title.split('').join('').toLowerCase();
     return (
         <motion.div variants={projectAnimationVariant} className="relative">
-            <div className={overlayStyles}>
+            <div className={overlayStyles} onClick={handleOpenProject}>
                 <p className="text-2xl font-playfair">{title}</p>
                 <p className="mt-8">{subtitle}</p>
             </div>
@@ -54,9 +57,8 @@ const Projects = () => {
                     </div>
                 </div>
                 <p className="mt-10 mb-10">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci ipsa autem deleniti tempore
-                    maiores expedita, eaque, officiis nobis sapiente mollitia voluptates distinctio atque, cum possimus
-                    esse quisquam explicabo aut ut!
+                    Here are few of my projects that showcase my drive and creativity to make content that is fun to
+                    make and that is hopefully enjoyable to the users that use it.
                 </p>
             </motion.div>
             <div className="flex justify-center">
@@ -74,26 +76,30 @@ const Projects = () => {
                     <Project
                         title="CryptoPrices"
                         subtitle={
-                            'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis consequatur maxime esse doloribu'
+                            'A reactJS application that through an api gathers information on crypto currencies and displays them for the user to use.'
                         }
+                        refrence="https://dtisljar-cryptoprices.netlify.app/"
                     />
                     <Project
                         title="PokemonSimulator"
                         subtitle={
-                            'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis consequatur maxime esse doloribu'
+                            'A reactJS application that uses the pokeapi to simulate a simple pokemon battle. Using animations and different ux aproaches the simulation is pleasing to the user.'
                         }
+                        refrence="https://dtisljar-pokemonsimulator.netlify.app/"
                     />
                     <Project
                         title="ObiteljskeKonstelacije"
                         subtitle={
-                            'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis consequatur maxime esse doloribu'
+                            'A presentational site using reactJS that serves to provide further information to its users.'
                         }
+                        refrence="https://obiteljskekonstelacije.eu"
                     />
                     <Project
                         title="ChatApp"
                         subtitle={
-                            'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis consequatur maxime esse doloribu'
+                            'A chat application built using reactJS that allows anyone connected to chat with each other. Open the app on multiple tabs and try it out yourself.'
                         }
+                        refrence="https://dtisljar-reactchatapp.netlify.app/"
                     />
                     <div className="flex justify-center text-center items-center p-10 bg-blue max-2-[400] max-h-[400px] text-2xl font-playfair font-semibold">
                         INTUITIVE UX APROACH

@@ -24,9 +24,9 @@ const Skills = () => {
                     </p>
                     <LineDivider width="w-1/3" />
                     <p className="mt-10 mb-7">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed qui similique ipsam, harum, dolores
-                        maiores saepe nam est iure nostrum blanditiis, aperiam sunt repellendus consequuntur minus eaque
-                        quasi magni. Incidunt!
+                        These are the skills I am confident in and believe I would be a useful asset with. I am always
+                        ready to learn more to be productive and I am not afraid of learning new processes and
+                        technologies.
                     </p>
                 </motion.div>
                 <motion.div

@@ -41,10 +41,8 @@ const Home = ({ setSelectedPage }) => {
                     }}
                 >
                     <p className="text-6xl font-playfair z-10 text-center md:text-start">Denis Tišljar</p>
-                    <p className="mt-10 mb-7 text-sm text-center md:text-start leading-6">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci laborum fugit earum
-                        perspiciatis quia praesentium, aperiam cumque molestiae quos, delectus voluptatem, repellendus
-                        et enim vel tempore nisi rerum? Molestiae, voluptas!
+                    <p className="mt-10 mb-7 text-base text-center md:text-start leading-6">
+                        A frontend developer based in Zagreb with experience in design.
                     </p>
                 </motion.div>
                 <motion.div
