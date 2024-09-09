@@ -4,9 +4,10 @@ import Navbar from './scenes/Navbar';
 import DotSections from './scenes/DotSections';
 import Home from './scenes/Home';
 import Skills from './scenes/Skills';
-import Projects from './scenes/Projects';
+// import Projects from './scenes/Projects';
 import ContactMe from './scenes/ContactMe';
 import Footer from './scenes/Footer';
+import ProjectsPreview from './scenes/ProjectsPreview';
 
 function App() {
     const [selectedPage, setSelectedPage] = useState('home');
@@ -31,8 +32,11 @@ function App() {
             <div className="w-5/6 mx-auto md:h-full">
                 <Skills />
             </div>
-            <div className="w-5/6 mx-auto md:min-h-full">
+            {/* <div className="w-5/6 mx-auto md:min-h-full">
                 <Projects />
+            </div> */}
+            <div className="w-5/6 mx-auto md:min-h-full">
+                <ProjectsPreview />
             </div>
             <div className="w-5/6 mx-auto md:min-h-full">
                 <ContactMe />

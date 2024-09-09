@@ -63,7 +63,7 @@ const Skills = () => {
                     }}
                 >
                     <div className="flex flex-col justify-between items-center gap-8">
-                        <p className="font-faiplay font font-semibold text-4xl ">HTML</p>
+                        <p className="font-faiplay font font-semibold text-4xl ">HTML & CSS</p>
                         {!isAboveMediumScreens && (
                             <LineDivider color="bg-yellow" width="w-3/4" className="text-center" />
                         )}
@@ -82,7 +82,7 @@ const Skills = () => {
                     }}
                 >
                     <div className="flex flex-col justify-between items-center gap-8">
-                        <p className="font-faiplay font font-semibold text-4xl ">CSS</p>
+                        <p className="font-faiplay font font-semibold text-4xl ">Typescript</p>
                         {!isAboveMediumScreens && (
                             <LineDivider color="bg-green" width="w-3/4" className="text-center" />
                         )}
@@ -101,7 +101,7 @@ const Skills = () => {
                 >
                     {isAboveMediumScreens && <LineDividerVertical color="bg-green" height=" h-8" />}
                     <div className="flex flex-col justify-between items-center gap-8">
-                        <p className="font-faiplay font font-semibold text-4xl ">Javascript</p>
+                        <p className="font-faiplay font font-semibold text-4xl ">React Native</p>
                         {!isAboveMediumScreens && <LineDivider color="bg-blue" width="w-3/4" className="text-center" />}
                     </div>
                 </motion.div>

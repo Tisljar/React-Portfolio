@@ -1,19 +1,78 @@
 import LineDivider from '../components/LineDivider';
-import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
+import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactMe = () => {
-    const {
-        register,
-        trigger,
-        formState: { errors },
-    } = useForm();
-    const onSubmit = async (e) => {
-        const isValid = await trigger();
-        if (!isValid) {
-            e.preventDefault();
+    const [successEmail, setSuccessEmail] = useState('');
+    const [errorEmail, setErrorEmail] = useState('');
+    const [formErrors, setFormErrors] = useState({});
+
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form.current);
+        const user_name = formData.get('user_name');
+        const user_email = formData.get('user_email');
+        const message = formData.get('message');
+
+        const errors = {};
+        if (!user_name) {
+            errors.name = 'This field is required!';
+        } else if (user_name.length > 100) {
+            errors.name = 'Maximum length is 100 characters';
         }
+
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        if (!user_email) {
+            errors.email = 'This field is required!';
+        } else if (!emailRegex.test(user_email)) {
+            errors.email = 'Invalid email address.';
+        }
+
+        if (!message) {
+            errors.message = 'This field is required!';
+        } else if (message.length > 2000) {
+            errors.message = 'Maximum length is 2000 characters';
+        }
+
+        if (Object.keys(errors).length > 0) {
+            setFormErrors(errors);
+            return;
+        }
+
+        const templateParams = {
+            user_name: user_name,
+            user_email: user_email,
+            message: message,
+        };
+
+        setFormErrors({});
+
+        emailjs
+            .send(
+                process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+                templateParams,
+                process.env.REACT_APP_EMAILJS_USER_ID,
+            )
+            .then(
+                (result) => {
+                    console.log(result.text);
+                    setSuccessEmail('Successfully sent email!');
+                    setErrorEmail('');
+                },
+                (error) => {
+                    console.log(error.text);
+                    console.log(error);
+                    setErrorEmail('There was a problem with sending an email.');
+                    setSuccessEmail('');
+                },
+            );
     };
+
     return (
         <section id="contact" className="py-48">
             <motion.div
@@ -61,62 +120,44 @@ const ContactMe = () => {
                         visible: { opacity: 1, y: 0 },
                     }}
                 >
-                    <form
-                        target="_blank"
-                        onSubmit={onSubmit}
-                        action="https://formsubmit.co/denis.tisljar@gmail.com"
-                        method="POST"
-                    >
+                    <form ref={form} onSubmit={sendEmail}>
                         <input
                             type="text"
                             className="w-full bg-form-grey font-semibold placeholder-deep-blue-opaque p-3"
                             placeholder="NAME"
-                            {...register('name', { required: true, maxLength: 100 })}
+                            name="user_name"
                         />
-                        {errors.name && (
-                            <p className="text-yellow mt-1">
-                                {errors.name.type === 'required' && 'This field is required!'}
-                                {errors.name.type === 'maxLength' && 'Maximum length is 100 characters'}
-                            </p>
-                        )}
+                        {formErrors.name && <p className="text-yellow mt-1">{formErrors.name}</p>}
+
                         <input
-                            type="text"
+                            type="email"
                             className="w-full bg-form-grey font-semibold placeholder-deep-blue-opaque mt-5 p-3"
                             placeholder="EMAIL"
-                            {...register('email', {
-                                required: true,
-                                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            })}
+                            name="user_email"
                         />
-                        {errors.email && (
-                            <p className="text-yellow mt-1">
-                                {errors.name.type === 'required' && 'This field is required!'}
-                                {errors.name.type === 'pattern' && 'Invaild email adress.'}
-                            </p>
-                        )}
+                        {formErrors.email && <p className="text-yellow mt-1">{formErrors.email}</p>}
+
                         <textarea
-                            type="text"
                             className="w-full bg-form-grey font-semibold placeholder-deep-blue-opaque p-3 mt-5"
                             placeholder="MESSAGE"
+                            name="message"
                             rows="4"
-                            cols="50"
-                            {...register('message', {
-                                required: true,
-                                maxLength: 2000,
-                            })}
                         />
-                        {errors.message && (
-                            <p className="text-yellow mt-1">
-                                {errors.name.type === 'required' && 'This field is required!'}
-                                {errors.name.type === 'maxLength' && 'The maximum length is 2000 characters!'}
-                            </p>
-                        )}
-                        <button
-                            type="submit"
-                            className="p-5 bg-green font-semibold mt-5 hover:bg-blue transition duration-500"
-                        >
-                            SEND ME AN EMAIL
-                        </button>
+                        {formErrors.message && <p className="text-yellow mt-1">{formErrors.message}</p>}
+                        <div className="flex items-center mt-5">
+                            <div>
+                                <button
+                                    type="submit"
+                                    className="p-5 bg-green font-semibold hover:bg-blue transition duration-500"
+                                >
+                                    SEND ME AN EMAIL
+                                </button>
+                            </div>
+                            <div>
+                                {successEmail && <p className="text-green font-semibold ml-4">{successEmail}</p>}
+                                {errorEmail && <p className="font-semibold ml-4 text-rose-600">{errorEmail}</p>}
+                            </div>
+                        </div>
                     </form>
                 </motion.div>
             </div>
