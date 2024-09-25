@@ -20,8 +20,8 @@ const Project = ({ title, subtitle, refrence }) => {
 
     const projectTitle = title.split('').join('').toLowerCase();
     return (
-        <motion.div
-            variants={projectAnimationVariant}
+        <div
+            // variants={projectAnimationVariant}
             className="border-form-grey rounded-2xl border-solid border-2 m-4"
         >
             <div className="border-white rounded border-solid">
@@ -43,7 +43,7 @@ const Project = ({ title, subtitle, refrence }) => {
                 {/* <p className="text-2xl font-playfair">{title}</p>
                 <p className="mt-8">{subtitle}</p> */}
             </div>
-        </motion.div>
+        </div>
     );
 };
 
