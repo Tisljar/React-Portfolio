@@ -8,10 +8,10 @@ const container = {
     },
 };
 
-const projectAnimationVariant = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 },
-};
+// const projectAnimationVariant = {
+//     hidden: { opacity: 0, scale: 0.8 },
+//     visible: { opacity: 1, scale: 1 },
+// };
 
 const Project = ({ title, subtitle, refrence }) => {
     const handleOpenProject = () => {
