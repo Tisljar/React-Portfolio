@@ -96,11 +96,11 @@ const ProjectsPreview = () => {
                         refrence="https://dtisljar-pokemonsimulator.netlify.app/"
                     />
                     <Project
-                        title="ObiteljskeKonstelacije"
+                        title="Casio"
                         subtitle={
-                            'A presentational site using reactJS that serves to provide further information to its users.'
+                            'A reacctJS mock landing page for casio watches as a brand with dynamic preview of watch models.'
                         }
-                        refrence="https://obiteljskekonstelacije.eu"
+                        refrence="https://dtisljar-casio.netlify.app/"
                     />
                     <Project
                         title="ChatApp"
